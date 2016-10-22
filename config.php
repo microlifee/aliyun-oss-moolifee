@@ -8,4 +8,5 @@ return [
 	'author'          => 'Jrue Moolifee',
 	'age'             => 24,
 	'love--'          => '高惠琳',		
+	'univesity'       => '西南大学',
 ];
