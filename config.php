@@ -6,4 +6,5 @@ return [
 	'accessKeySecret' => 'Ml7EeZo9lspICHqRyACPGTBO6OjSFp',
 	'accessHost'      => 'http://www.aikena.com/',
 	'author'          => 'Jrue Moolifee',
+	'age'             => 24,
 ];
