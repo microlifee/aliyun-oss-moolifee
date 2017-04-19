@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once 'New.class.php';
 require_once 'db.class.php';
 $mydb = new Mydb();
@@ -7,9 +7,9 @@ $centetime = date('Y-m-d', strtotime('-2day')) . ' 23:59:59';
 $datestring = date('Y-m-d', (strtotime($centetime) - 8 * 3600));
 //销售收款
 $receive = $mydb->FetchAll("SELECT h.`add_bill` as amount,h.`entity_name` as tiaojian1,
-                h.`status` as tiaojian2,h.`comment` as tiaojian3,h.`parent_id`,h.`created_at` AS wancheng,h.`comment`,h.`entity_name`,
-                h.`status`,o.* FROM `sales_flat_order_status_history` AS h LEFT JOIN `sales_flat_order` AS o ON h.parent_id = o.entity_id 
-                WHERE o.store_id in(" . $storeId . ") AND CONVERT(h.created_at,DATE)>'" . $datestring . "' AND h.`comment` = '确认收款'");
+				h.`status` as tiaojian2,h.`comment` as tiaojian3,h.`parent_id`,h.`created_at` AS wancheng,h.`comment`,h.`entity_name`,
+				h.`status`,o.* FROM `sales_flat_order_status_history` AS h LEFT JOIN `sales_flat_order` AS o ON h.parent_id = o.entity_id 
+				WHERE o.store_id in(" . $storeId . ") AND CONVERT(h.created_at,DATE)>'" . $datestring . "' AND h.`comment` = '确认收款'");
 foreach ($receive as $kreceive => $vreceive) {
     if (!$mydb->checkshipping($vreceive['parent_id'])) {
         continue;
@@ -45,7 +45,7 @@ foreach ($receive as $kreceive => $vreceive) {
 
         //将$refunded,$discount,$amount拆分成自营；非自营（多货主）单据。$vreceive['parent_id']
         $recieve_item = $mydb->FetchAll("SELECT NAME,product_id,order_id,amount_refunded,rewardpoints_discount,
-                    row_total,product_id FROM `sales_flat_order_item` WHERE order_id = '{$vreceive['parent_id']}'");
+		   			row_total,product_id FROM `sales_flat_order_item` WHERE order_id = '{$vreceive['parent_id']}'");
         $refunded_no = 0;
         $discount_no = 0;
         $amount_no = 0;
